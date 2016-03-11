@@ -1,7 +1,13 @@
 select.files <- function(directory)
-  list.files(directory, recursive=TRUE)
+  list.files(directory, recursive=TRUE, all.files=TRUE)
 
 select.dirs <- function(directory)
   list.dirs(directory, recursive=TRUE)
 
-# list.dirs(directory, recursive=FALSE)
+select.git.repositories <- function(directory) {
+  directory <- sub('/*$', '', directory)
+
+  if (dir.exists(file.path(directory, '.git'))) directory
+  else unlist(sapply(list.dirs(directory, recursive=FALSE),
+                     select.repositories), use.names=FALSE)
+}
