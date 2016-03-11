@@ -1,0 +1,14 @@
+Package: filesurvey
+Title: Sample statistics about directories of files
+Version: 0.0.1
+Authors@R: person("Thomas", "Levine", email="_@thomaslevine.com",
+                  role = c("aut", "cre"))
+Description:
+  Apply sampling methods to a directory files, including cluster sampling,
+  stratified sampling, systematic sampling, and multistage sampling.
+  Run arbitrary statistics with the selected files (perhaps file size,
+  word count, file format) to estimate the population averages. You may
+  specify various approaches to selecting strata; you may use each
+  directory as a stratum, or you may use heuristics based on file names.
+Depends: R (>= 3.2.2)
+License: AGPL
