@@ -9,5 +9,5 @@ select.git.repositories <- function(directory) {
 
   if (dir.exists(file.path(directory, '.git'))) directory
   else unlist(sapply(list.dirs(directory, recursive=FALSE),
-                     select.repositories), use.names=FALSE)
+                     select.git.repositories), use.names=FALSE)
 }
