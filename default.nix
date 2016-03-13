@@ -2,8 +2,8 @@ with import <nixpkgs> {}; {
   rEnv = stdenv.mkDerivation {
     name = "r";
     buildInputs = [
-      rPackages.devtools
+      rPackages.devtools rPackages.survey
     ];
-    R_LIBS = "${rPackages.devtools}/library";
+    R_LIBS = "${rPackages.devtools}/library:${rPackages.survey}/library";
   };  
 }
