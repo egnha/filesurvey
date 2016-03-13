@@ -16,7 +16,7 @@ select.git.repositories <- function(directory) {
   0 == length(list.dirs(directory, full.names=FALSE, recursive=FALSE))
 
 REPOSITORY.FILES <- c('^.git$', '^DESCRIPTION$', '^README.*$')
-select.repositories <- function(directory) {
+select.projects <- function(directory) {
   directory <- sub('/*$', '', directory)
   files <- list.files(directory, full.names=FALSE, recursive=FALSE,
                       all.files=TRUE)
@@ -24,5 +24,5 @@ select.repositories <- function(directory) {
                     rep(files, length(REPOSITORY.FILES)))
   if (any(matches) || .has.no.subdirectory(directory)) directory
   else unlist(sapply(list.dirs(directory, recursive=FALSE),
-                     select.repositories), use.names=FALSE)
+                     select.projects), use.names=FALSE)
 }
