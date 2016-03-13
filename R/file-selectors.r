@@ -23,6 +23,12 @@ select.projects <- function(directory) {
   matches <- mapply(grepl, rep(REPOSITORY.FILES, each=length(files)),
                     rep(files, length(REPOSITORY.FILES)))
   if (any(matches) || .has.no.subdirectory(directory)) directory
-  else unlist(sapply(list.dirs(directory, recursive=FALSE),
-                     select.projects), use.names=FALSE)
+  else sapply(list.dirs(directory, recursive=FALSE),
+              select.projects, USE.NAMES=FALSE)
+}
+
+select.immediate.subdirs <- function(directory) {
+  directory <- sub('/*$', '', directory)
+  x <- list.dirs(directory, recursive=FALSE)
+  x[dir.exists(x)]
 }
