@@ -10,5 +10,5 @@ Description:
   word count, file format) to estimate the population averages. You may
   specify various approaches to selecting strata; you may use each
   directory as a stratum, or you may use heuristics based on file names.
-Depends: R (>= 3.2.2)
+Depends: R (>= 3.2.2), survey
 License: AGPL
