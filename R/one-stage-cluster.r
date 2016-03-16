@@ -5,11 +5,10 @@ filesvy.simple.cluster <- function(directory, n=8, f=file.count) {
   }
 
   subdirs.sample <- sample(subdirs, size=n)
-  x <- svydesign(~subdir,
-                 weights=~weight,
-                 data=data.frame(dir=directory,
-                                 subdir=subdirs.sample,
-                                 value=sapply(subdirs.sample, f),
-                                 weight=n/length(subdirs)))
-  svytotal(~value, x)
+  svydesign(ids=~subdir,
+            probs=~prob,
+            data=data.frame(dir=directory,
+                            subdir=subdirs.sample,
+                            value=sapply(subdirs.sample, f),
+                            prob=n/length(subdirs)))
 }
